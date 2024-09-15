@@ -1,0 +1,2 @@
+export const DocsUrl = 'http://docs.thenovakai.com/';  // URL pointing to Astro blog's documentation section
+export const BlogUrl = 'http://docs.thenovakai.com/blog/';  // URL pointing to Astro blog's blog section

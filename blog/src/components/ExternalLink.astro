@@ -1,0 +1,15 @@
+---
+// ExternalLink.astro
+const { href } = Astro.props;
+
+// Determine if the link is external
+const isExternal = href.startsWith('http');
+---
+
+<a
+  href={href}
+  target={isExternal ? '_blank' : '_self'}
+  rel={isExternal ? 'noopener noreferrer' : undefined}
+>
+  <slot />
+</a>

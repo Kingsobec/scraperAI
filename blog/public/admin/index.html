@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Content Manager | Netlify CMS</title>
+
+  <!-- Include Netlify Identity Widget -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Include Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+</head>
+<body>
+  <!-- Add Netlify Identity Menu for Login/Signup -->
+  <div data-netlify-identity-menu></div>
+
+  <!-- Add a Button for Manual Login/Signup -->
+  <div data-netlify-identity-button>Login with Netlify Identity</div>
+
+  <!-- Initialize Netlify Identity -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      if (window.netlifyIdentity) {
+        // Initialize Netlify Identity widget
+        window.netlifyIdentity.on('init', user => {
+          console.log('Netlify Identity initialized', user);
+          
+          // Check if invite_token is in the URL hash and no user is logged in
+          if (!user && window.location.hash.includes('invite_token')) {
+            window.netlifyIdentity.open('signup'); // Open the signup modal
+          }
+        });
+
+        // Handle login events
+        window.netlifyIdentity.on('login', user => {
+          console.log('Logged in', user);
+          // Redirect to admin page after login
+          if (user) {
+            window.location.href = "/admin/";
+          }
+        });
+
+        // Handle logout events
+        window.netlifyIdentity.on('logout', () => {
+          console.log('Logged out');
+          // Redirect to homepage after logout
+          window.location.href = "/";
+        });
+
+        // Initialize the Identity widget
+        window.netlifyIdentity.init();
+      }
+    });
+  </script>
+
+  <!-- Initialize Netlify CMS -->
+  <script>
+    CMS.init();
+  </script>
+</body>
+</html>
