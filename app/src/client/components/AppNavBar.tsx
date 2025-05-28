@@ -17,7 +17,7 @@ const navigation = [
   { name: 'AI Courses', href: routes.DemoAppRoute.build() },
   { name: 'Free Resources', href: DocsUrl, target: '_blank' },
   { name: 'Blog', href: BlogUrl, target: '_blank' },
-  { name: 'Links', href: 'https://linktr.ee/thenovakai', target: '_blank' },
+  { name: 'Links', href: 'https://linktr.ee/kingsobecNovak', target: '_blank' },
 ];
 
 // Component for displaying the logo
